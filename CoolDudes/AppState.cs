@@ -12,6 +12,7 @@ public class AppState
     {
         this.dataService = dataService;
     }
+
     public async Task RefreshCoolDudes()
     {
         await dataService.Initialise();

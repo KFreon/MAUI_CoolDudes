@@ -15,7 +15,7 @@ public partial class AddNewModal : Popup
         BindingContext = new AddNewViewModel();
     }
 
-    private async void Button_Clicked(object sender, EventArgs e)
+    private async void Add(object sender, EventArgs e)
     {
         var vm = BindingContext as AddNewViewModel;
         var coolDude = new CoolDude { Name = vm.Name, AreTheyACoolDude = vm.IsCool };

@@ -19,7 +19,7 @@
                 <myThings:NiceEntry Placeholder="Your name" WidthRequest="300" Text="{Binding Name}"/>
                 <myThings:NiceCheckbox Text="Cool?" IsChecked="{Binding IsCool}"/>
             </FlexLayout>
-            <Button Margin="0,20,0,0" Clicked="Button_Clicked" Text="Add"/>
+            <Button Margin="0,20,0,0" Clicked="Add" Text="Add"/>
         </VerticalStackLayout>
     </Border>
     

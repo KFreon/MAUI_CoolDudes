@@ -1,7 +1,5 @@
-﻿using System.Collections.ObjectModel;
-using MAUI_CoolDudes.Database;
+﻿using MAUI_CoolDudes.Database;
 using Microsoft.EntityFrameworkCore;
-
 
 public class DataService
 {

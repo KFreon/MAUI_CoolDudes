@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace MAUI_CoolDudes.Database;
+﻿namespace MAUI_CoolDudes.Database;
 
 public class CoolDude
 {
