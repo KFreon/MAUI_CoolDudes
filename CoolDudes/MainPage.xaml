@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI_CoolDudes.MainPage"
+             xmlns:viewmodels="clr-namespace:MAUI_CoolDudes"
+             xmlns:models="clr-namespace:MAUI_CoolDudes.Database;assembly=Database"
+                          xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+
+             x:DataType="viewmodels:MainPageViewModel">
+
+        <Grid Padding="30,0" VerticalOptions="FillAndExpand">
+            <Grid.Resources>
+                <Style x:Key="ListHeaders" TargetType="Label">
+                    <Setter Property="FontSize" Value="24"/>
+                    <Setter Property="HorizontalOptions" Value="Center"/>
+                    <Setter Property="TextDecorations" Value="Underline"/>
+                    <Setter Property="FontAttributes" Value="Bold"/>
+                </Style>
+
+            <DataTemplate x:DataType="models:CoolDude" x:Key="CoolDudeTemplate">
+                <ViewCell>
+                    <FlexLayout JustifyContent="SpaceAround" VerticalOptions="Center">
+                        <HorizontalStackLayout VerticalOptions="Center">
+                            <Label Text="{Binding Name}"/>
+                            <Label IsVisible="{Binding AreTheyACoolDude, Converter={toolkit:InvertedBoolConverter}}" Text="😭"/>
+                            <Label IsVisible="{Binding AreTheyACoolDude}" Text="😎"/>
+                        </HorizontalStackLayout>
+                        <Button Text="X" TextColor="White" Clicked="DeleteADude" Background="Black" BorderColor="Black" />
+                    </FlexLayout>
+                </ViewCell>
+            </DataTemplate>
+        </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <HorizontalStackLayout Grid.Row="0" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="Start">
+                <Label
+                    Text="Are you a cool dude?"
+                    SemanticProperties.HeadingLevel="Level1"
+                    FontSize="50"
+                    HorizontalOptions="Center" />
+
+                <Button
+                    x:Name="addButton"
+                    Text="Add a cooldude"
+                    Clicked="AddACoolDude"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Margin="10,0,0,0"/>
+            </HorizontalStackLayout>
+                
+                
+            <VerticalStackLayout Grid.Row="1" Grid.Column="0">
+                <Label Text="Cool Dudes 😎" Style="{StaticResource ListHeaders}" />
+            <ListView ItemsSource="{Binding State.CoolDudes}" WidthRequest="500" ItemTemplate="{StaticResource CoolDudeTemplate}"/>
+        </VerticalStackLayout>
+            <BoxView Grid.Column="1" Grid.Row="1"/>
+            <VerticalStackLayout Grid.Row="1" Grid.Column="2">
+                <Label Text="Uncool Dudes 😭" Style="{StaticResource ListHeaders}"/>
+                <ListView ItemsSource="{Binding State.UncoolDudes}" WidthRequest="500" ItemTemplate="{StaticResource CoolDudeTemplate}"/>
+        </VerticalStackLayout>
+        </Grid>
+
+</ContentPage>
